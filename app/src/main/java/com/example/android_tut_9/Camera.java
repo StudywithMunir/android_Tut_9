@@ -38,7 +38,11 @@ public class Camera extends Activity implements View.OnClickListener {
         btn=(Button) findViewById(R.id.setWallPaper);
         iv=(ImageView) findViewById(R.id.ivReturnPic);
         ib=(ImageButton) findViewById(R.id.ibTakepic);
+
+        //btn for setting wallpaper
         btn.setOnClickListener(this);
+
+        //ib for taking pic
         ib.setOnClickListener(this);
     }
 
@@ -47,6 +51,7 @@ public class Camera extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
 
+            //for setting wallpaper
             case R.id.setWallPaper:
 
                 try {
@@ -79,19 +84,25 @@ public class Camera extends Activity implements View.OnClickListener {
 
 
     //resultcode=information gave it
+    //data=label
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         //checking if operation is suceeded
+        //if information is true
+        //RESULT_OK is a method 
         if (resultCode == RESULT_OK){
 
             //when start the camera activity and when it closes it put extras
             Bundle extras=data.getExtras();
 
             //setting bitmap based of those extras
+            //data is key value inside get
             bmp=(Bitmap) extras.get("data");
 
+            //for imageView
             iv.setImageBitmap(bmp);
 
         }
